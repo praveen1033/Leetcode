@@ -1,0 +1,23 @@
+profit = 0
+        buy  = 0
+        x = None
+        for i in range(1, len(prices)):
+            diff = prices[i] - prices[buy]
+            if x == None:
+                if diff < 0 and i < len(prices) - 1:
+                    buy = i
+                elif i == len(prices) - 1 and prices[i] > prices[i-1]:
+                    profit = profit + prices[i] - prices[i-1]
+                else:
+                    x = 1
+                    curr_diff = diff
+            else:
+                if curr_diff > diff or i == len(prices)-1:
+                    sell = i-1
+                    if i == len(prices)-1 and curr_diff < diff:
+                        sell =  sell + 1
+                    profit = profit + prices[sell] - prices[buy]
+                    buy = i
+                    x = None
+                    
+        return profit
