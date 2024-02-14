@@ -1,4 +1,33 @@
-"""
+"""  Best Version
+        if len(chars) == 1:
+            return len(chars)
+        i = 1
+        c = 1
+        res = []
+        prev = chars[0]
+        res.append(chars[0])
+        while i < len(chars):
+            if chars[i] == prev:
+                c += 1
+            else:
+                if c > 1:
+                    s = str(c)
+                    for c in s:
+                        res.append(c)
+                c = 1
+                prev = chars[i]
+                res.append(chars[i])
+            i += 1
+            
+        if c > 1:
+            s = str(c)
+            for c in s:
+                res.append(c)
+        chars[:len(res)] = res
+        return len(res)
+
+
+"""   old slow version
         if len(chars) == 1:
             return len(chars)
         i = 1
