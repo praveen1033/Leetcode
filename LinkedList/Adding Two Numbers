@@ -1,0 +1,25 @@
+"""
+        head = cur1 = l1
+        cur2 = l2
+        c = 0
+        while cur1 != None and cur2 != None:
+            s = cur1.val + cur2.val + c
+            cur1.val = s%10
+            if s > 9: c = 1
+            else: c = 0
+            prev = cur1
+            cur1 = cur1.next
+            cur2 = cur2.next
+        if cur2 != None:
+            prev.next = cur2
+            cur1 = cur2
+        while cur1!= None:
+            s = cur1.val + c
+            cur1.val = s%10
+            if s > 9: c = 1
+            else: c = 0
+            prev = cur1
+            cur1 = cur1.next
+        if c == 1:
+            prev.next = ListNode(1)
+        return head
