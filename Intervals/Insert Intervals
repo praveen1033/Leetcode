@@ -1,0 +1,46 @@
+""" own code long version
+        
+        if len(intervals) == 0:
+            return intervals + [newInterval]
+        
+        for i in range(len(intervals)):
+            if newInterval[0] < intervals[i][0]:
+                if i==0:
+                    intervals = [newInterval] + intervals
+                    break
+                elif newInterval[0] < intervals[i-1][1]:
+                    if newInterval[1] < intervals[i-1][1]:
+                        break
+                    else:
+                        intervals[i-1][1] = newInterval[1]
+                        break
+                else:
+                    if intervals[i][0] > newInterval[1]:
+                        intervals = intervals[:i] + [newInterval] + intervals[i:]
+                        break
+                    else:
+                        intervals = intervals[:i] + [newInterval] + intervals[i:]
+                        break
+            
+            elif i == len(intervals) - 1:
+                if newInterval[0] > intervals[i][1]:
+                        return intervals + [newInterval]
+                else:
+                    if newInterval[1] < intervals[i][1]:
+                        return intervals
+                    else:
+                        intervals[i][1] = newInterval[1]
+                        return intervals
+        
+        i = 0
+        while i != len(intervals)-1:
+            if intervals[i][1] >= intervals[i+1][0]:
+                if intervals[i][1] > intervals[i+1][1]:
+                    intervals.remove(intervals[i+1])
+                else:
+                    intervals[i][1] = intervals[i+1][1]
+                    intervals.remove(intervals[i+1])
+            else:
+                i += 1
+        
+        return intervals
