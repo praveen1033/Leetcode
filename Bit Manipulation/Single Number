@@ -1,0 +1,27 @@
+""" using xor results in 0s for duplicates
+        res = 0
+        for n in nums:
+            res = res ^ n
+        return res
+
+""" bad memory version 2 
+        d = set()
+        for val in nums:
+            if val in d:
+                d.remove(val)
+            else:
+                d.add(val)
+        return list(d)[0]
+
+""" bad version1
+        maxi = np.max(nums)
+        mini = np.min(nums)
+        b = [None]*(maxi-mini+1)
+
+        for i in range(len(nums)):
+            if b[nums[i]-mini] == None:
+                b[nums[i]-mini] = 1
+            else:
+                b[nums[i]-mini] = 0                 
+
+        return b.index(1)+mini
