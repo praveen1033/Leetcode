@@ -1,0 +1,18 @@
+""" conversion to binary string and count 1s
+        l = 0
+        m = bin(n)
+        for i in range(len(m)):
+            if m[i] == '1':
+                l += 1
+        
+        return l
+
+""" alternate slower version
+        l = 0
+    
+        for i in range(32,-1,-1):
+            if int(n/2**i) == 1:
+                l += 1
+                n = n%2**i
+            #print(n/2**i)
+        return l
