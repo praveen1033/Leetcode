@@ -1,0 +1,13 @@
+
+
+""" Inefficient solution
+        d = set()
+        for i in range(len(nums)):
+            d.add(i)
+            if (len(nums)-1) in d:
+                return True
+            for j in range(1,nums[i]+1):
+                d.add(i+j)
+            d.remove(i)
+            if len(d) == 0:
+                return False
